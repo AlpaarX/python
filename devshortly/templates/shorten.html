@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="{% url 'shorten' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Shorten</button>
+</form>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+{% if slug %}
+<p>Your shortened URL: <a href="i/{{ slug }}">127.0.0.1:8000/i/{{ slug }}</a></p>
+{% endif %}
+{% endblock %}
